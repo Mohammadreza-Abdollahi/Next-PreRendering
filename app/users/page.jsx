@@ -1,19 +1,19 @@
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
 export const revalidate = 300;
-const getPosts = async () => {
-  const res = await fetch("http://localhost:4000/posts", {
+const getUsers = async () => {
+  const res = await fetch("http://localhost:4000/users", {
     next: { tags: ["getPosts"] },
   });
-  const posts = await res.json();
-  return posts;
+  const users = await res.json();
+  return users;
 };
-const Posts = async () => {
-  const posts = await getPosts();
+const Users = async () => {
+  const users = await getUsers();
 
   return (
     <section className="text-center py-3">
-      <h1 className="text-xl my-3">Posts Page</h1>
+      <h1 className="text-xl my-3">Users Page</h1>
       <BackButton />
       <div className="px-3 my-3">
         <Link href="/posts/add">
@@ -24,12 +24,12 @@ const Posts = async () => {
       </div>
       <div className="mt-5">
         <ul className="flex flex-col">
-          {posts.map((post) => (
+          {users.map((post) => (
             <Link href={`/posts/${post.id}`} key={post.id}>
               <li
                 className={`hover:bg-blue-50 hover:text-blue-800 border-b-2 pb-1 pt-4 border-blue-300 transition-all duration-150`}
               >
-                {post.title}
+                {post.name}
               </li>
             </Link>
           ))}
@@ -38,4 +38,4 @@ const Posts = async () => {
     </section>
   );
 };
-export default Posts;
+export default Users;
