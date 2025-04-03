@@ -1,16 +1,13 @@
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
-export const revalidate = 300;
+export const revalidate = 0;
 const getUsers = async () => {
-  const res = await fetch("http://localhost:4000/users", {
-    next: { tags: ["getPosts"] },
-  });
+  const res = await fetch("http://localhost:4000/users");
   const users = await res.json();
   return users;
 };
 const Users = async () => {
   const users = await getUsers();
-
   return (
     <section className="text-center py-3">
       <h1 className="text-xl my-3">Users Page</h1>
