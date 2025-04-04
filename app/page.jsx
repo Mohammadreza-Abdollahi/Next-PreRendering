@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const Home = async () => {
   return (
     <section className="text-center py-3">

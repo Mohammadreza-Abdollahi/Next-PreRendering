@@ -2,7 +2,7 @@ import BackButton from "@/components/BackButton";
 import Link from "next/link";
 export const revalidate = 0;
 const getPosts = async () => {
-  const res = await fetch("http://localhost:4000/posts");
+  const res = await fetch("http://localhost:4000/posts",{next: {tags: ["getPosts"]}});
   const posts = await res.json();
   return posts;
 };

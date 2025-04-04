@@ -1,9 +1,16 @@
 import BackButton from "@/components/BackButton";
-export const revalidate = 0;
+export const revalidate = 43200;// 12 Hour...
 const getUserDetails = async (userId) => {
   const res = await fetch(`http://localhost:4000/users/${userId}`);
   const user = await res.json();
   return user;
+};
+export const generateStaticParams = async () => {
+  const res = await fetch(`http://localhost:4000/users`);
+  const users = await res.json();
+  return users.map((user) => ({
+    userId: String(user.id), 
+  }));
 };
 const UserId = async ({ params }) => {
   const user = await getUserDetails(params.userId);

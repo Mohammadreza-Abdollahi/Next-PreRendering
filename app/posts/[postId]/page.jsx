@@ -1,5 +1,5 @@
 import BackButton from "@/components/BackButton";
-export const revalidate = 3600;
+export const revalidate = 43200;// 12 Hour...
 const getPostDetails = async (postId) => {
   const res = await fetch(`http://localhost:4000/posts/${postId}`);
   const post = await res.json();
@@ -9,7 +9,7 @@ export const generateStaticParams = async () => {
   const res = await fetch(`http://localhost:4000/posts`);
   const posts = await res.json();
   return posts.map((post) => ({
-    postId: String(post.id),
+    postId: String(post.id), 
   }));
 };
 const PostId = async ({ params }) => {
