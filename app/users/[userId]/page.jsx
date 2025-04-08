@@ -22,6 +22,6 @@ const UserId = async ({ params }) => {
       <h1 className="text-2xl my-3">User Email : {user.email}</h1>
       <h1 className="text-lg my-3">Username : {user.username}</h1>
     </section>
-  );
+  );  
 };
 export default UserId;
